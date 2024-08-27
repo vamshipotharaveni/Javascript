@@ -1,144 +1,74 @@
-/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+  background-color: #20f8f1;
+  text-align: center;
 }
 
-html {
-    color: white;
-    background-color: black;
-    font-style: none;
-    padding: 0;
-    margin: 0;
+.container {
+  height: 70vh;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
 }
 
-.first-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0 auto;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgb(13, 13, 17);
-    padding-left: 15px;
-    padding-top: 10px;
-    color: white;
-    text-align: center;
-    display: block;
-}
-
-/* Header Styling */
-.heading-div {
-    margin-top: 20px;
-}
-
-.heading {
-    font-size: 24px;
-    margin: 0;
-}
-
-.heading-span {
-    color: rgb(36, 205, 39);
-}
-
-/* Tic-Tac-Toe Board */
-.tic-tac-toe-container {
-    padding-top: 50px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 300px;
-    height: 300px;
-    gap: 5px;
-    margin: 0 auto;
+.game {
+  height: 60vmin;
+  width: 60vmin;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5vmin;
 }
 
 .box {
-    background-color: white;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
+  height: 18vmin;
+  width: 18vmin;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+  font-size: 8vmin;
+  color: #b0413e;
+  background-color: #ffffc7;
 }
 
-/* Light/Dark Mode Button */
-.bulb-button {
-    font-size: 32px;
-    padding: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    color: gold;
-    outline: none;
-    transition: transform 0.3s ease;
+#reset-btn {
+  padding: 1rem;
+  font-size: 1.25rem;
+  background-color: #191913;
+  color: #fff;
+  border-radius: 1rem;
+  border: none;
 }
 
-.bulb-button:hover {
-    transform: scale(1.2);
+#new-btn {
+  padding: 1rem;
+  font-size: 1.25rem;
+  background-color: #191913;
+  color: #fff;
+  border-radius: 1rem;
+  border: none;
 }
 
-/* Reset Button */
-.reset-button {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    padding: 10px 20px;
-    background-color: #47ffa6;
-    color: rgb(12, 6, 6);
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
+#msg {
+  color: #ffffc7;
+  font-size: 5vmin;
 }
 
-.reset-button:hover {
-    background-color: #14ac4a;
+.msg-container {
+  height: 100vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .tic-tac-toe-container {
-        width: 240px;
-        height: 240px;
-    }
-
-    .box {
-        font-size: 20px;
-    }
-
-    .heading {
-        font-size: 20px;
-    }
-
-    .bulb-button, .reset-button {
-        font-size: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .tic-tac-toe-container {
-        width: 180px;
-        height: 180px;
-    }
-
-    .box {
-        font-size: 16px;
-    }
-
-    .heading {
-        font-size: 18px;
-    }
-
-    .bulb-button{
-        color:#14ac4a;
-    }
+.hide {
+  display: none;
 }

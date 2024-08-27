@@ -1,67 +1,91 @@
-const boxes = document.querySelectorAll('.box');
-const resetButton = document.querySelector('.reset-button');
-const bulbButton = document.querySelector('.bulb-button');
-let isXTurn = true;
+let boxes = document.querySelectorAll(".box");
+let resetBtn = document.querySelector("#reset-btn");
+let newGameBtn = document.querySelector("#new-btn");
+let msgContainer = document.querySelector(".msg-container");
+let msg = document.querySelector("#msg");
 
-// Toggle Light/Dark Mode
-bulbButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    document.body.classList.toggle('light-mode');
-    document.querySelector('.first-container').classList.toggle('light-mode');
-    document.querySelector('.first-container').classList.toggle('dark-mode');
-});
+let turnO = true; //playerX, playerO
+let count = 0; //To Track Draw
 
-// Place 'X' or 'O'
-boxes.forEach(box => {
-    box.addEventListener('click', function() {
-        if (this.textContent === '') {
-            this.textContent = isXTurn ? 'X' : 'O';
-            isXTurn = !isXTurn;
-            checkWinner();
-        }
-    });
-});
+const winPatterns = [
+  [0, 1, 2],
+  [0, 3, 6],
+  [0, 4, 8],
+  [1, 4, 7],
+  [2, 5, 8],
+  [2, 4, 6],
+  [3, 4, 5],
+  [6, 7, 8],
+];
 
-// Reset Game
-resetButton.addEventListener('click', () => {
-    boxes.forEach(box => box.textContent = '');
-    isXTurn = true;
-});
+const resetGame = () => {
+  turnO = true;
+  count = 0;
+  enableBoxes();
+  msgContainer.classList.add("hide");
+};
 
-// Check Winner
-function checkWinner() {
-    const winPatterns = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
-
-    winPatterns.forEach(pattern => {
-        const [a, b, c] = pattern;
-        if (boxes[a].textContent && boxes[a].textContent === boxes[b].textContent && boxes[a].textContent === boxes[c].textContent) {
-            alert(`Player ${boxes[a].textContent} wins!`);
-            resetGame();
-        }
-    });
-
-    // Check for Draw
-    if ([...boxes].every(box => box.textContent !== '')) {
-        alert("It's a draw!");
-        resetGame();
+boxes.forEach((box) => {
+  box.addEventListener("click", () => {
+    if (turnO) {
+      //playerO
+      box.innerText = "O";
+      turnO = false;
+    } else {
+      //playerX
+      box.innerText = "X";
+      turnO = true;
     }
-}
+    box.disabled = true;
+    count++;
 
-// Reset the game after a win or draw
-function resetGame() {
-    boxes.forEach(box => box.textContent = '');
-    isXTurn = true;
-}
+    let isWinner = checkWinner();
 
-// Initialize with light mode
-document.body.classList.add('light-mode');
-document.querySelector('.first-container').classList.add('light-mode');
+    if (count === 9 && !isWinner) {
+      gameDraw();
+    }
+  });
+});
+
+const gameDraw = () => {
+  msg.innerText = `Game was a Draw.`;
+  msgContainer.classList.remove("hide");
+  disableBoxes();
+};
+
+const disableBoxes = () => {
+  for (let box of boxes) {
+    box.disabled = true;
+  }
+};
+
+const enableBoxes = () => {
+  for (let box of boxes) {
+    box.disabled = false;
+    box.innerText = "";
+  }
+};
+
+const showWinner = (winner) => {
+  msg.innerText = `Congratulations, Winner is ${winner}`;
+  msgContainer.classList.remove("hide");
+  disableBoxes();
+};
+
+const checkWinner = () => {
+  for (let pattern of winPatterns) {
+    let pos1Val = boxes[pattern[0]].innerText;
+    let pos2Val = boxes[pattern[1]].innerText;
+    let pos3Val = boxes[pattern[2]].innerText;
+
+    if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
+      if (pos1Val === pos2Val && pos2Val === pos3Val) {
+        showWinner(pos1Val);
+        return true;
+      }
+    }
+  }
+};
+
+newGameBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", resetGame);
