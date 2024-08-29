@@ -9,6 +9,10 @@ body{
     color: black;
     text-align: center;
 }
+.title{
+  font-size:6vmin;
+  font-weight: 700;
+}
 
 .box-container {
     margin-top: 10%;
@@ -88,16 +92,23 @@ body{
 }
 
 .dark{
-  background-color: rgba(14, 17, 17, 0.934);
+  background-color: black;
   color: white;
   .fst{
     background-color:darkorange;
     color: black;
+    
   }
+  .footer marquee {
+    color: white;
+}
   .msg{
     color:gold;
   }
-  
+  .footer {
+    background-color: #050000;
+    color:white;
+  }
 }
 .light{
   background-color: aqua;
@@ -105,7 +116,64 @@ body{
   .msg{
     color:rgb(18, 7, 234)
   }
+  .footer {
+    background-color: aqua;
+    color:rgb(8, 1, 1);
+  }
+  .footer marquee {
+    color: hsl(0, 40%, 4%);
+}
 }
 .msg{
   color:rgb(18, 7, 234)
+}
+
+@media (max-width: 480px) {
+  .title{
+    font-size:5vmin;
+    font-weight:700;
+  }
+  .fst{
+    height:10.5vmin;
+    width:15.9vmin;
+    
+  }
+  .reset{
+    margin-right:5vmin;
+  }
+   
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color:aqua;
+    color: #050000;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer marquee {
+    color: hsl(0, 40%, 4%);
+    font-size: 1rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .footer marquee {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer marquee {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .footer marquee {
+        font-size: 0.7rem;
+    }
 }
