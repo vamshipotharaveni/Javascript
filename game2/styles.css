@@ -37,34 +37,75 @@ body{
     border-radius: 5px;
     background-color: black;
     color: white;
-    margin-top:5vmin;
+    margin-top:8vmin;
     transition: all 0.4s;
     cursor: pointer;
 
   }
+
+  .newbtn{
+    height:6vmin;
+    width: 16vmin;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin-top:5vmin;
+    transition: all 0.4s;
+    cursor: pointer;
+    display: none;
+  }
+
   .mode{
     position: fixed;
-    top:-1px;
-    right:5px; 
+    top:1px;
+    right:10px; 
+    
+
   }
 
   .reset{
     height:6vmin;
-    width: 10vmin;
+    width: 11vmin;
     border: none;
     border-radius: 5px;
     background-color: black;
     color: white; 
-    margin-top:8vmin;
+    margin-top:5vmin;
     transition: all 0.4s;
     cursor: pointer;
   }
   .reset:hover{
-    width: 10.8vmin;
+    width: 11.8vmin;
     height: 6.4vmin;
 
   }
 .title{
     text-align: center;
 }
+.tit{
+  color:rgb(243, 79, 3);
+}
 
+.dark{
+  background-color: rgba(14, 17, 17, 0.934);
+  color: white;
+  .fst{
+    background-color:darkorange;
+    color: black;
+  }
+  .msg{
+    color:gold;
+  }
+  
+}
+.light{
+  background-color: aqua;
+  color: black;
+  .msg{
+    color:rgb(18, 7, 234)
+  }
+}
+.msg{
+  color:rgb(18, 7, 234)
+}
